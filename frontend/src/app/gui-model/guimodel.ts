@@ -87,6 +87,52 @@ export class GuiModel {
                         }
                     ]
                 },
+                {
+                    "id": "Neu", // Neues Formular in der neuen Kachel hinzugefügt
+                    "title": { default: "Neue Kachel" },
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": { default: "Name" },
+                            "required": true,
+                            "width": 2
+                        },
+                        {
+                            "id": "description",
+                            "type": "text",
+                            "name": { default: "Beschreibung" },
+                            "newRow": true,
+                            "maxLength": 4000,
+                            "height": 4,
+                            "width": 2
+                        },
+                        {
+                            "id": "startDate",
+                            "type": "date",
+                            "name": { default: "Start Datum" },
+                            "width": 2
+                        },
+                        {
+                            "id": "endDate",
+                            "type": "date",
+                            "name": { default: "End Datum" },
+                            "width": 2
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                }
             ],
             "pageList": [
                 {
@@ -135,6 +181,17 @@ export class GuiModel {
                             "form": {
                                 "form": "ToDoForm"
                             }
+                        },
+                        {
+                            "type": "newButton", // Neue Kachel hinzugefügt
+                            "name": { default: "Neues To-Do mit Datumsbegrenzung"},
+                            "icon": "fa-calendar",
+                            "style": 5,
+                            "color": "teal",
+                            "width": 2,
+                            "form": {
+                                "form": "Neu"
+                            }
                         }
                     ]
                 },
@@ -147,3 +204,4 @@ export class GuiModel {
         return this._guiModel;
     }
 }
+
