@@ -18,4 +18,12 @@ public class NewFormControllerTests {
         assertEquals("2024-01-01", controller.getNewForm(1).getStartDate());
         assertEquals("2024-12-31", controller.getNewForm(1).getEndDate());
     }
+
+    @Test
+    public void testGetNewForms() {
+        NewFormController controller = new NewFormController();
+        int initialSize = controller.getNewForms().size();
+        assertEquals(0, initialSize);
+    }
+
 }
