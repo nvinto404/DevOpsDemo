@@ -3,6 +3,7 @@ package ch.zhaw.iwi.devops.demo;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class NewFormPathListEntry {
 
     private Key key;
@@ -16,7 +17,7 @@ public class NewFormPathListEntry {
     private String tooltip;
     private List<String> details = new ArrayList<>();
     private float order;
-    private Form form;
+    private FormData formData;
 
     public NewFormPathListEntry() {
         this.active = true;
@@ -110,15 +111,15 @@ public class NewFormPathListEntry {
         this.tooltip = tooltip;
     }
 
-    public String getForm() {
-        return form != null ? form.getForm() : null;
+    public String getFormData() {
+        return formData != null ? formData.getFormData() : null;
     }
 
-    public void setForm(String form) {
-        if (form == null) {
-            this.form = null;
+    public void setFormData(String formData) {
+        if (formData == null) {
+            this.formData = null;
         } else {
-            this.form = new Form(form);
+            this.formData = new FormData(formData);
         }
     }
 
@@ -141,15 +142,15 @@ public class NewFormPathListEntry {
         }
     }
 
-    private static class Form {
-        private String form;
+    private static class FormData {
+        private String formData;
 
-        public Form(String form) {
-            this.form = form;
+        public FormData(String formData) {
+            this.formData = formData;
         }
 
-        public String getForm() {
-            return form;
+        public String getFormData() {
+            return formData;
         }
     }
 }

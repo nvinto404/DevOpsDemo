@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ToDoController {
 
     private Map<Integer, ToDo> todos = new HashMap<Integer, ToDo>();
+    private static final Logger logger = LoggerFactory.getLogger(NewFormController.class);
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
@@ -30,7 +33,7 @@ public class ToDoController {
         this.todos.put(3,new ToDo(3, "Unit Tests", "Neues Projekt mit Unit Tests starten"));
         this.todos.put(4,new ToDo(4, "Deployment", "Jede Woche!"));
         this.todos.put(5,new ToDo(5, "Organigramm", "Löschen"));
-        System.out.println("Init Data");
+        logger.info("Init Data");
     }
 
     @GetMapping("/test")
@@ -54,7 +57,7 @@ public class ToDoController {
         var result = new ArrayList<PathListEntry<Integer>>();
         for (var todo : this.todos.values()) {
             var entry = new PathListEntry<Integer>();
-            entry.setKey(todo.getId(), "todoKey");
+            entry.setEntryKey(todo.getId(), "todoKey");
             entry.setName(todo.getTitle());
             entry.getDetails().add(todo.getDescription());
             entry.setTooltip(todo.getDescription());
