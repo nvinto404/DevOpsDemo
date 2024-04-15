@@ -2,6 +2,7 @@ package ch.zhaw.iwi.devops.demo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,4 +27,11 @@ public class NewFormControllerTests {
         assertEquals(0, initialSize);
     }
 
+    @Test
+    public void testDeleteNewForm() {
+        NewFormController controller = new NewFormController();
+        NewForm deletedForm = controller.deleteNewForm(1);
+        System.out.println("Gelöschtes Formular: " + deletedForm);
+        assertNull(controller.getNewForm(1));
+    }
 }
