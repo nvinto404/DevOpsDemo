@@ -8,16 +8,20 @@ import java.util.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/services/newform") // Prefix für alle Endpunkte in diesem Controller
+@RequestMapping("/services/newform") 
+
 public class NewFormController {
+
+    private static final String START_DATE = "2024-01-01";
+    private static final String END_DATE = "2024-12-31";
 
     private Map<Integer, NewForm> newForms = new HashMap<>();
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
-        newForms.put(1, new NewForm(1, "Neue Kachel 1", "Beschreibung 1", "2024-01-01", "2024-12-31"));
-        newForms.put(2, new NewForm(2, "Neue Kachel 2", "Beschreibung 2", "2024-01-01", "2024-12-31"));
-        newForms.put(3, new NewForm(3, "Neue Kachel 3", "Beschreibung 3", "2024-01-01", "2024-12-31"));
+        newForms.put(1, new NewForm(1, "Neue Kachel 1", "Beschreibung 1", START_DATE, END_DATE));
+        newForms.put(2, new NewForm(2, "Neue Kachel 2", "Beschreibung 2", START_DATE, END_DATE));
+        newForms.put(3, new NewForm(3, "Neue Kachel 3", "Beschreibung 3", START_DATE, END_DATE));
         System.out.println("Init Data for NewForms");
     }
 
