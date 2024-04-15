@@ -34,4 +34,19 @@ public class NewFormControllerTests {
         System.out.println("Gelöschtes Formular: " + deletedForm);
         assertNull(controller.getNewForm(1));
     }
+
+    @Test
+    public void testUpdateNewForm() {
+        NewFormController controller = new NewFormController();
+        NewForm originalForm = new NewForm();
+        originalForm.setId(1);
+        originalForm.setName("Originalname");
+        controller.createNewForm(originalForm); 
+    
+        NewForm updatedForm = new NewForm();
+        updatedForm.setId(1);
+        updatedForm.setName("Aktualisierter Name");
+        controller.updateNewForm(1, updatedForm);
+        assertEquals("Aktualisierter Name", controller.getNewForm(1).getName());
+    }
 }
